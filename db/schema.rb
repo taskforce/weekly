@@ -10,7 +10,25 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120222114155) do
+ActiveRecord::Schema.define(:version => 20120222140427) do
+
+  create_table "todos", :force => true do |t|
+    t.string   "category"
+    t.text     "description"
+    t.string   "request_team"
+    t.string   "request_user"
+    t.string   "owner"
+    t.string   "status"
+    t.date     "started"
+    t.date     "due"
+    t.date     "finished"
+    t.text     "note"
+    t.integer  "author_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "todos", ["author_id"], :name => "index_todos_on_author_id"
 
   create_table "users", :force => true do |t|
     t.string   "email",                                 :default => "", :null => false

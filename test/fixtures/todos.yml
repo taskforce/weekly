@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  category: MyString
+  description: MyText
+  request_team: MyString
+  request_user: MyString
+  owner: MyString
+  status: MyString
+  started: 2012-02-22
+  due: 2012-02-22
+  finished: 2012-02-22
+  note: MyText
+  author: 
+
+two:
+  category: MyString
+  description: MyText
+  request_team: MyString
+  request_user: MyString
+  owner: MyString
+  status: MyString
+  started: 2012-02-22
+  due: 2012-02-22
+  finished: 2012-02-22
+  note: MyText
+  author: 

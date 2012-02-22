@@ -1,0 +1,58 @@
+<%= form_for(@todo) do |f| %>
+  <input type="hidden" name="author" value="<%= current_user.id %>"></input>
+  <% if @todo.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@todo.errors.count, "error") %> prohibited this todo from being saved:</h2>
+
+      <ul>
+      <% @todo.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :category %><br />
+    <%= f.text_field :category %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br />
+    <%= f.text_area :description %>
+  </div>
+  <div class="field">
+    <%= f.label :request_team %><br />
+    <%= f.text_field :request_team %>
+  </div>
+  <div class="field">
+    <%= f.label :request_user %><br />
+    <%= f.text_field :request_user %>
+  </div>
+  <div class="field">
+    <%= f.label :owner %><br />
+    <%= f.text_field :owner %>
+  </div>
+  <div class="field">
+    <%= f.label :status %><br />
+    <%= f.text_field :status %>
+  </div>
+  <div class="field">
+    <%= f.label :started %><br />
+    <%= f.date_select :started %>
+  </div>
+  <div class="field">
+    <%= f.label :due %><br />
+    <%= f.date_select :due %>
+  </div>
+  <div class="field">
+    <%= f.label :finished %><br />
+    <%= f.date_select :finished %>
+  </div>
+  <div class="field">
+    <%= f.label :note %><br />
+    <%= f.text_area :note %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

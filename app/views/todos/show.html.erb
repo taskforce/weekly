@@ -1,0 +1,60 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Category:</b>
+  <%= @todo.category %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @todo.description %>
+</p>
+
+<p>
+  <b>Request team:</b>
+  <%= @todo.request_team %>
+</p>
+
+<p>
+  <b>Request user:</b>
+  <%= @todo.request_user %>
+</p>
+
+<p>
+  <b>Owner:</b>
+  <%= @todo.owner %>
+</p>
+
+<p>
+  <b>Status:</b>
+  <%= @todo.status %>
+</p>
+
+<p>
+  <b>Started:</b>
+  <%= @todo.started %>
+</p>
+
+<p>
+  <b>Due:</b>
+  <%= @todo.due %>
+</p>
+
+<p>
+  <b>Finished:</b>
+  <%= @todo.finished %>
+</p>
+
+<p>
+  <b>Note:</b>
+  <%= @todo.note %>
+</p>
+
+<p>
+  <b>Author:</b>
+  <%= @todo.author %>
+</p>
+
+
+<%= link_to 'Edit', edit_todo_path(@todo) %> |
+<%= link_to 'Back', todos_path %>
