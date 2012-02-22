@@ -33,3 +33,4 @@ gem 'jquery-rails'
 
 gem 'devise'
 gem 'to_xls'
+gem 'pg'
