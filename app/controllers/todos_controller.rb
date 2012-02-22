@@ -7,6 +7,7 @@ class TodosController < ApplicationController
     respond_to do |format|
       format.html # index.html.erb
       format.json { render :json => @todos }
+      format.xls { send_data @todos.to_xls }
     end
   end
 

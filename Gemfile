@@ -32,3 +32,4 @@ gem 'jquery-rails'
 # gem 'ruby-debug'
 
 gem 'devise'
+gem 'to_xls'
