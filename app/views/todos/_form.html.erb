@@ -10,49 +10,46 @@
       <% end %>
       </ul>
     </div>
-  <% end %>
+	<% end %>
 
-  <div class="field">
-    <%= f.label :category %><br />
-    <%= f.text_field :category %>
-  </div>
-  <div class="field">
-    <%= f.label :description %><br />
-    <%= f.text_area :description %>
-  </div>
-  <div class="field">
-    <%= f.label :request_team %><br />
-    <%= f.text_field :request_team %>
-  </div>
-  <div class="field">
-    <%= f.label :request_user %><br />
-    <%= f.text_field :request_user %>
-  </div>
-  <div class="field">
-    <%= f.label :owner %><br />
-    <%= f.text_field :owner %>
-  </div>
-  <div class="field">
-    <%= f.label :status %><br />
-    <%= f.text_field :status %>
-  </div>
-  <div class="field">
-    <%= f.label :started %><br />
-    <%= f.date_select :started %>
-  </div>
-  <div class="field">
-    <%= f.label :due %><br />
-    <%= f.date_select :due %>
-  </div>
-  <div class="field">
-    <%= f.label :finished %><br />
-    <%= f.date_select :finished %>
-  </div>
-  <div class="field">
-    <%= f.label :note %><br />
-    <%= f.text_area :note %>
-  </div>
+	<table>
+		<tr>
+			<td>구분:
+			<%= f.select(:category, options_for_select(["SVR", "WAS", "DB"])) %>
+			</td>
+			<td>상태:
+				<%= f.select(:status, options_for_select(["진행중", "완료"])) %>
+			</td>
+		</tr>
+		<tr>
+			<td>요청팀: <%= f.text_field :request_team, :size => 10 %></td>
+			<td>요청자: <%= f.text_field :request_user, :size => 10 %></td>
+			<td>담당자: <%= f.text_field :owner, :size => 10 %></td>
+		</tr>
+		<tr>
+			<td>시작일</td>
+			<td>완료예정일</td>
+			<td>완료일</td>
+		</tr>
+		<tr>
+			<td><%= f.date_select :started, :size => 10 %></td>
+			<td><%= f.date_select :due, :size => 10 %></td>
+			<td><%= f.date_select :finished, :size => 10 %></td>
+		</tr>
+	</table>
+
+	<table>
+		<tr>
+			<td>내용</td>
+			<td>비고</td>
+		</tr>
+		<tr>
+			<td><%= f.text_area :description, :rows => 5 %></td>
+			<td><%= f.text_area :note, :rows => 5 %></td>
+		</tr>
+	</table>
   <div class="actions">
     <%= f.submit %>
   </div>
 <% end %>
+<!-- vim:set ts=2 sw=2: -->

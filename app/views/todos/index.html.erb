@@ -30,7 +30,7 @@
     <td><%= todo.due %></td>
     <td><%= todo.finished %></td>
     <td><%= todo.note %></td>
-    <td><%= todo.author %></td>
+    <td><%= todo.author.email %></td>
     <td><%= link_to 'Show', todo %></td>
     <td><%= link_to 'Edit', edit_todo_path(todo) %></td>
     <td><%= link_to 'Destroy', todo, :confirm => 'Are you sure?', :method => :delete %></td>
