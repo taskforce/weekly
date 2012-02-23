@@ -7,7 +7,18 @@ class TodosController < ApplicationController
     respond_to do |format|
       format.html # index.html.erb
       format.json { render :json => @todos }
-      format.xls { send_data @todos.to_xls }
+      format.xls { send_data @todos.to_xls(
+        :cell_format => { :border => true, :border_color => :grey },
+        :header_format => { :border => true, :border_color => :grey,
+          :weight => :bold, :pattern_bg_color => :grey },
+        :columns => [:id, :created_at, :category, :description,
+          :request_team, :request_user, :owner, :status,
+          :started, :due, :finished, :note ],
+        :headers => ["번호", "발생", "구분", "설명",
+          "요청부서", "요청자", "처리담당자", "진행상태",
+          "시작일", "완료예정일", "완료일", "비고"
+        ])
+      }
     end
   end
 

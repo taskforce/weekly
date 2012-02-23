@@ -1,18 +1,16 @@
 <h1>Listing todos</h1>
 
-<table>
+<table class="default" cellspacing=0>
   <tr>
-    <th>Category</th>
-    <th>Description</th>
-    <th>Request team</th>
-    <th>Request user</th>
-    <th>Owner</th>
-    <th>Status</th>
-    <th>Started</th>
-    <th>Due</th>
-    <th>Finished</th>
-    <th>Note</th>
-    <th>Author</th>
+    <th>분류</th>
+    <th>내용</th>
+    <th>요청팀</th>
+    <th>요청자</th>
+    <th>담당자</th>
+    <th>상태</th>
+    <th>시,예,종</th>
+    <th>노트</th>
+    <th>작성자</th>
     <th></th>
     <th></th>
     <th></th>
@@ -26,9 +24,9 @@
     <td><%= todo.request_user %></td>
     <td><%= todo.owner %></td>
     <td><%= todo.status %></td>
-    <td><%= todo.started %></td>
-    <td><%= todo.due %></td>
-    <td><%= todo.finished %></td>
+    <td><%= todo.started %>
+    <br/><%= todo.due %>
+    <br/><%= todo.finished %></td>
     <td><%= todo.note %></td>
     <td><%= todo.author.email %></td>
     <td><%= link_to 'Show', todo %></td>
@@ -41,3 +39,4 @@
 <br />
 
 <%= link_to 'New Todo', new_todo_path %>
+<%= link_to 'Export as xls', todos_path(:format => :xls) %>
