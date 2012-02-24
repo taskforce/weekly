@@ -15,11 +15,14 @@ module TodosHelper
     font_head = Spreadsheet::Font.new("맑은 고딕", {:size=>9, :weight=>:bold})
 
     fmtopt_rows = { :border=>true, :border_color=>:grey, :font => font_rows }
+    fmtopt_rows = fmtopt_rows.merge({ :vertical_align=>:middle })
+    fmtopt_text = fmtopt_rows.merge({ :text_wrap=>true })
     fmtopt_head = fmtopt_rows.merge({ :font=>font_head, :align => :center })
     fmtopt_date = fmtopt_rows.merge({ :number_format => "YYYY-MM-DD" })
 
     format_head = Spreadsheet::Format.new fmtopt_head
     format_rows = Spreadsheet::Format.new fmtopt_rows
+    format_text = Spreadsheet::Format.new fmtopt_text
     format_date = Spreadsheet::Format.new fmtopt_date
 
     tada.row(0).default_format = format_head
@@ -30,9 +33,11 @@ module TodosHelper
     i = 1
     @todos.each do |t|
       tada.row(i).default_format = format_rows
+      tada.row(i).set_format(2,format_text)
       tada.row(i).set_format(7,format_date)
       tada.row(i).set_format(8,format_date)
       tada.row(i).set_format(9,format_date)
+      tada.row(i).set_format(10,format_text)
       tada.row(i).push t.id, t.category, t.description,
         t.request_team, t.request_user, t.owner,
         t.status, t.started, t.due, t.finished, t.note
@@ -40,11 +45,12 @@ module TodosHelper
     end
 
     tada.column(0).width = 3
-    tada.column(2).width = 35
+    tada.column(1).width = 5
+    tada.column(2).width = 50
     tada.column(10).width = 35
-    tada.column(7).width = 12
-    tada.column(8).width = 12
-    tada.column(9).width = 12
+    tada.column(7).width = 11
+    tada.column(8).width = 11
+    tada.column(9).width = 11
 
     io = StringIO.new
     book.write(io)
