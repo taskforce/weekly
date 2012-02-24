@@ -34,9 +34,9 @@
       <div><%= todo.status %></div>
     </td>
     <td>
-      <div><%= todo.started.strftime('%m/%d') %></div>
-      <div><%= todo.due.strftime('%m/%d') %></div>
-      <div><%= todo.finished.strftime('%m/%d') %></div>
+      <div><%= todo.started ? todo.started.strftime('%m/%d') : "-" %></div>
+      <div><%= todo.due ? todo.due.strftime('%m/%d') : "-" %></div>
+      <div><%= todo.finished ? todo.finished.strftime('%m/%d') : "-" %></div>
     </td>
     <td><%= todo.note %></td>
     <td>
