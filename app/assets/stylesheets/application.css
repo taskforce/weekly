@@ -22,3 +22,6 @@ td div { border-top:1px dashed gray; white-space:nowrap; }
 td div:first-child { border-top:0; white-space:nowrap; }
 .fmt-underline { text-decoration:underline; }
 a { text-decoration:none; font-style:italic; }
+
+.headline ul { margin:0; }
+.headline ul li { display:inline; list-style: none; }

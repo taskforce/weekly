@@ -1,5 +1,15 @@
 <h1>Tadas</h1>
 
+<style>
+  .toolbar { width:98%; margin:auto; text-align:right; margin-bottom: 5px; }
+  .toolbar { font-weight: bold; font-size: 1.2em; }
+</style>
+
+<div class="toolbar">
+<%= link_to '새 할일', new_todo_path %>
+| <%= link_to 'Excel 내놔', todos_path(:format => :xls) %>
+</div>
+
 <table class="default" cellspacing=0>
   <tr>
     <th class="ui-widget-header">내용</th>
@@ -12,10 +22,11 @@
 
 <% @todos.each do |todo| %>
   <tr>
-    <td><%= todo.description %> 허벌라게 긴 글을 씁니다라고 하지만서도...</td>
+    <td><%= todo.description %></td>
     <td class="fmt-nowrap">
       <div><%= todo.request_team %></div>
       <div><%= todo.request_user %></div>
+      <div><%= todo.level %></div>
     </td>
     <td class="fmt-nowrap">
       <div><%= todo.category %></div>
@@ -27,7 +38,7 @@
       <div><%= todo.due.strftime('%m/%d') %></div>
       <div><%= todo.finished.strftime('%m/%d') %></div>
     </td>
-    <td><%= todo.note %> 허벌라게 긴 글을 씁니다라고 하지만서도...</td>
+    <td><%= todo.note %></td>
     <td>
       <%= todo.author.email.split('@')[0] %><br />
       <%= link_to 'Edit', edit_todo_path(todo) %><br />
@@ -36,10 +47,3 @@
   </tr>
 <% end %>
 </table>
-
-<br />
-
-<div style="text-align:right; font-weight: bold">
-<%= link_to 'New Todo', new_todo_path %>
-| <%= link_to 'Export as xls', todos_path(:format => :xls) %>
-</div>
