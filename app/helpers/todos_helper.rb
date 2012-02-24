@@ -1,3 +1,5 @@
+# encoding: utf-8
+#
 require 'spreadsheet'
 require 'spreadsheet/font'
 require 'stringio'
