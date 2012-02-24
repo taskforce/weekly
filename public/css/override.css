@@ -1,0 +1,90 @@
+/* common/layout customize */
+
+/* basic style */
+body { font-family:Overlock,Verdana,helvetica,sans-serif; }
+h1 { font-family: Lobster,"Yanone Kaffeesatz",Verdana,helvetica,sans-serif; }
+h2,h3,h4 { font-family: Viga,Verdana; font-weight: normal !important; }
+a:hover {background:inherit}
+
+body, .ui-widget, .ui-widget .ui-widget { font-size:10pt; }
+.align-c { text-align:center; }
+.align-l { text-align:left; }
+.align-r { text-align:right; }
+
+/* layout override and color scheme */
+.ui-layout-pane { padding: 0; border: 0px; }
+.ui-layout-pane-east { border-left: 1px solid #aaa; }
+.ui-layout-toggler { background-color: #555; }
+.ui-layout-resizer { background-color: #666; }
+.ui-layout-resizer-east { border-left: 1px solid #aaa;}
+.ui-layout-resizer-east { background-color: #888; }
+.ui-layout-north { background:black; color:#999 }
+.ui-layout-content {padding:5px}
+
+/* header customize */
+#header { margin:20px 0 6px 10px; white-space:nowrap; }
+#header h1, #header h4 { display: inline; }
+
+#toolbar { float:right; text-align:top; }
+#toolbar img.hcu-captain-star {vertical-align: middle; }
+#toolbar .button_to { display:inline-block; }
+#toolbar .ui-button { padding-top:0; padding-bottom:0; margin:0; }
+#toolbar .ui-button { border-right:0px; }
+#toolbar .ui-button-text { padding-top:0; padding-bottom:0 }
+
+#message-box { clear:both; float:right; }
+#message-box { margin: 10px; }
+#message-box div { display:inline; padding:0; border:0; }
+
+
+/* application styles */
+/* for pane header, and so on. */
+.hcu-header { margin:0; padding:4px 10px; }
+#hcu-help-content { padding:0.5em; }
+button.ui-button-icon-only {width:18px; height:18px;}
+
+.hcu-side-button { margin:0; width:100%; border:1px 0 solid #888; }
+.hcu-side-button { background:#eee !important; }
+.hcu-side-button span { font-size:0.9em; font-weight:normal; }
+.hcu-side-button span { text-align:left; }
+.hcu-side-button span { line-height:1; color: #333; font-style:italic; }
+
+
+/* jquery theme override */
+.ui-accordion .ui-accordion-header { margin-top:0; }
+.ui-accordion .ui-accordion-header a {padding-top:4px ; padding-bottom:4px;}
+.ui-accordion .ui-accordion-content { margin-bottom:0; padding:0px; }
+.ui-accordion .ui-accordion-content { border-bottom:0; }
+.ui-accordion .ui-state-hover a:hover {background:inherit; color:inherit}
+
+.ui-tabs .ui-tabs-panel { padding:0.8em 0.4em; overflow:auto; }
+.ui-tabs .ui-tabs-panel h1 { margin:0; font-size:2em; }
+.ui-tabs .ui-tabs-panel h3 { margin:0; }
+.ui-tabs .ui-tabs-nav li a {margin:2px; padding:0 5px; font-size:0.9em}
+.ui-tabs .ui-tabs-nav li .ui-icon-close {float:left; cursor:pointer;}
+
+/* slickgrid */
+.slick-container { border:1px solid #777; font-size:0.9em; }
+.slick-viewport .grid-canvas .ui-widget-content { background:inherit; }
+.slick-viewport .grid-canvas .ui-widget-content.odd { background:#f4f4f4; }
+.slick-viewport .grid-canvas .selected { background:#fc1 !important }
+.slick-viewport .grid-canvas .slick-hover { background:#ccf !important }
+.slick-viewport .grid-canvas .editor-text { border:1px solid; margin:-2px }
+.slick-header-column.ui-state-default {
+	padding:0 4px !important;
+	height:18px !important;
+}
+.slick-sort-indicator { height: 10px !important; width: 16px !important; }
+.slick-header-column .slick-sort-indicator-asc {
+	background-image: url("images/ui-icons_ededed_256x240.png") !important;
+	background-position: 0 -18px; }
+.slick-header-column .slick-sort-indicator-desc {
+	background-image: url("images/ui-icons_ededed_256x240.png") !important;
+	background-position: -64px -18px; }
+
+/* table for vertical information. mainly in main pane > tabs > subtabs */
+table.info-v { width:100%; }
+table.info-v td { padding:0px 4px 0px 4px; border-bottom:1px solid #777; }
+table.info-v td:first-child { text-align:right; }
+table.info-v td .detail { color:#777; font-style:italic; font-size:0.9em; }
+table.info-v td .detail { white-space:nowrap; }
