@@ -1,37 +1,40 @@
-<h1>Listing todos</h1>
+<h1>Tadas</h1>
 
 <table class="default" cellspacing=0>
   <tr>
-    <th>분류</th>
-    <th>내용</th>
-    <th>요청팀</th>
-    <th>요청자</th>
-    <th>담당자</th>
-    <th>상태</th>
-    <th>시,예,종</th>
-    <th>노트</th>
-    <th>작성자</th>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th class="ui-widget-header">분류</th>
+    <th class="ui-widget-header">내용</th>
+    <th class="ui-widget-header">요청</th>
+    <th class="ui-widget-header">담당</th>
+    <th class="ui-widget-header">일정</th>
+    <th class="ui-widget-header">노트</th>
+    <th class="ui-widget-header">작성자</th>
+    <th class="ui-widget-header">Act!</th>
   </tr>
 
 <% @todos.each do |todo| %>
   <tr>
     <td><%= todo.category %></td>
     <td><%= todo.description %></td>
-    <td><%= todo.request_team %></td>
-    <td><%= todo.request_user %></td>
-    <td><%= todo.owner %></td>
-    <td><%= todo.status %></td>
-    <td><%= todo.started %>
-    <br/><%= todo.due %>
-    <br/><%= todo.finished %></td>
+    <td>
+      <%= todo.request_team %><br />
+      <%= todo.request_user %>
+    </td>
+    <td>
+      <%= todo.owner %><br />
+      <%= todo.status %>
+    </td>
+    <td>
+      <%= todo.started.strftime('%m/%d') %><br/>
+      <%= todo.due.strftime('%m/%d') %><br/>
+      <%= todo.finished.strftime('%m/%d') %>
+    </td>
     <td><%= todo.note %></td>
     <td><%= todo.author.email %></td>
-    <td><%= link_to 'Show', todo %></td>
-    <td><%= link_to 'Edit', edit_todo_path(todo) %></td>
-    <td><%= link_to 'Destroy', todo, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td>
+      <%= link_to 'Edit', edit_todo_path(todo) %><br />
+      <%= link_to 'Delete', todo, :confirm => 'Are you sure?', :method => :delete %>
+    </td>
   </tr>
 <% end %>
 </table>

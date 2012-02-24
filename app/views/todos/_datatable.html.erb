@@ -1,0 +1,91 @@
+<table id="table"></table>
+
+<script src="/js/jquery.dataTables.js"></script>
+
+<script>
+	$(document).ready( function() {
+		usertable = $("#dt-users").dataTable({
+			"bServerSide"	: true,
+			"sAjaxSource"	: "/admin/user.datatables",
+			"aoColumns"	: [
+				{"sTitle":"name",	"sName":"name",	"mDataProp":"name"},
+				{"sTitle":"admin",	"sName":"admin",	"mDataProp":"admin"},
+				{"sTitle":"level",	"sName":"level",	"mDataProp":"level"},
+				{"sTitle":"active",	"sName":"active",	"mDataProp":"active"},
+				{"sTitle":"theme",	"sName":"theme",	"mDataProp":"theme"},
+				{"sTitle":"mail",	"sName":"mail",	"mDataProp":"mail"},
+				{"sTitle":"mobile",	"sName":"mobile",	"mDataProp":"mobile"},
+				{"sTitle":"login",	"sName":"email",	"mDataProp":"email"},
+			],
+			"aoColumnDefs"	: [
+				{"fnRender":function(o) {
+					if (o.aData.admin) {
+						return "Admin";
+					} else {
+						return "User";
+					}
+				}, "bUseRendered": false, "aTargets": [1]
+			},
+			{"fnRender":function(o) {
+				if (o.aData.level > 6) {
+					return "Over the Top";
+				} else if (o.aData.level > 4) {
+					return "Topgun";
+				} else if (o.aData.level > 2) {
+					return "Wrangler";
+				} else {
+					return "Cowboy"
+				}
+			}, "bUseRendered": false, "aTargets": [2]
+		},
+		{"fnRender":function(o) {
+		if (o.aData.active) {
+		return "Activated";
+		} else {
+		return "Disabled";
+		}
+		}, "bUseRendered": false, "aTargets": [3]
+		},
+		{"sClass":'center', "aTargets":[0,1,2,3]},
+		{"bSearchable":false, "aTargets":[1,2,3]}
+		],
+		"fnServerData"	: simpleDatatables,
+		
+		/* oops! workaround for javascript error. */
+		"oSearch"	: { "sSearch": "", "bRegex": "_contains" },
+
+		"bJQueryUI"	: true,
+		"aLengthMenu"	: [10, 25, 50, "All"],
+		"iDisplayLength": 25,
+		"sPaginationType": "full_numbers",
+		"aaSorting"	: [[1,'desc'],[0,'asc']]
+		});
+		$("#dt-users tbody").click(function(event) {
+		$(usertable.fnSettings().aoData).each(function() {
+		$(this.nTr).removeClass('row_selected');
+		});
+		$(event.target.parentNode).addClass('row_selected');
+		});
+		
+		$(".fg-toolbar select").addClass("ui-widget-content");
+		$(".fg-toolbar input").addClass("ui-widget-content");
+	
+		$( "#dialog-atreset" ).dialog({
+		autoOpen: false,
+		resizable: false,
+		height:250,
+		width:400,
+		modal: true,
+		buttons: {
+		Reset: function() { $( this ).dialog( "close" ); },
+		Cancel: function() { $( this ).dialog( "close" ); }
+		}
+		});
+		
+		$( "#do_atreset" ).click(function() {
+		$( "#dialog-atreset" ).dialog( "open" );
+		return false;
+		});
+	
+	});
+</script>
