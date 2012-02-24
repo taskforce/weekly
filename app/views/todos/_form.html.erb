@@ -18,19 +18,19 @@
 			<td>구분:
 			<%= f.select(:category, options_for_select(["SVR","WAS","DB","Misc"])) %>
 			</td>
+			<td>요청팀: <%= f.text_field :request_team, :size => 20 %></td>
+			<td>시작일: <%= f.datepicker :started %></td>
+		</tr>
+		<tr>
 			<td>상태:
 				<%= f.select(:status, options_for_select(["진행중","대기","완료"])) %>
 			</td>
+			<td>요청자: <%= f.text_field :request_user, :size => 20 %></td>
+			<td>예정일: <%= f.datepicker :due %></td>
+		</tr>
+		<tr>
 			<td>&nbsp;</td>
-		</tr>
-		<tr>
-			<td>요청팀: <%= f.text_field :request_team, :size => 10 %></td>
-			<td>요청자: <%= f.text_field :request_user, :size => 10 %></td>
-			<td>담당자: <%= f.text_field :owner, :size => 10 %></td>
-		</tr>
-		<tr>
-			<td>시작일: <%= f.datepicker :started %></td>
-			<td>완료예정일: <%= f.datepicker :due %></td>
+			<td>담당자: <%= f.text_field :owner, :size => 20 %></td>
 			<td>완료일: <%= f.datepicker :finished %></td>
 		</tr>
 	</table>
@@ -45,8 +45,10 @@
 			<td><%= f.text_area :note, :rows => 5 %></td>
 		</tr>
 	</table>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+	<table cellspacing=0 class="actions">
+		<tr><td style="text-align:right">
+			<%= f.submit %>
+		</td></tr>
+  </table>
 <% end %>
 <!-- vim:set ts=2 sw=2: -->

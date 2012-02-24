@@ -2,36 +2,34 @@
 
 <table class="default" cellspacing=0>
   <tr>
-    <th class="ui-widget-header">분류</th>
     <th class="ui-widget-header">내용</th>
     <th class="ui-widget-header">요청</th>
     <th class="ui-widget-header">담당</th>
     <th class="ui-widget-header">일정</th>
     <th class="ui-widget-header">노트</th>
-    <th class="ui-widget-header">작성자</th>
-    <th class="ui-widget-header">Act!</th>
+    <th class="ui-widget-header">Zzz..</th>
   </tr>
 
 <% @todos.each do |todo| %>
   <tr>
-    <td><%= todo.category %></td>
-    <td><%= todo.description %></td>
-    <td>
-      <%= todo.request_team %><br />
-      <%= todo.request_user %>
+    <td><%= todo.description %> 허벌라게 긴 글을 씁니다라고 하지만서도...</td>
+    <td class="fmt-nowrap">
+      <div><%= todo.request_team %></div>
+      <div><%= todo.request_user %></div>
+    </td>
+    <td class="fmt-nowrap">
+      <div><%= todo.category %></div>
+      <div><%= todo.owner %></div>
+      <div><%= todo.status %></div>
     </td>
     <td>
-      <%= todo.owner %><br />
-      <%= todo.status %>
+      <div><%= todo.started.strftime('%m/%d') %></div>
+      <div><%= todo.due.strftime('%m/%d') %></div>
+      <div><%= todo.finished.strftime('%m/%d') %></div>
     </td>
+    <td><%= todo.note %> 허벌라게 긴 글을 씁니다라고 하지만서도...</td>
     <td>
-      <%= todo.started.strftime('%m/%d') %><br/>
-      <%= todo.due.strftime('%m/%d') %><br/>
-      <%= todo.finished.strftime('%m/%d') %>
-    </td>
-    <td><%= todo.note %></td>
-    <td><%= todo.author.email %></td>
-    <td>
+      <%= todo.author.email.split('@')[0] %><br />
       <%= link_to 'Edit', edit_todo_path(todo) %><br />
       <%= link_to 'Delete', todo, :confirm => 'Are you sure?', :method => :delete %>
     </td>
@@ -41,5 +39,7 @@
 
 <br />
 
+<div style="text-align:right; font-weight: bold">
 <%= link_to 'New Todo', new_todo_path %>
-<%= link_to 'Export as xls', todos_path(:format => :xls) %>
+| <%= link_to 'Export as xls', todos_path(:format => :xls) %>
+</div>
