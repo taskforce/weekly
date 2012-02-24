@@ -7,5 +7,13 @@
 */
 
 body { margin:0; }
+* { font-family: "맑은 고딕" !important}
 div.headline { background:black; color:white;  padding:2px; text-align:right; }
-table.default td { border:1px solid black; }
+table {width:98%; margin:auto; }
+table th { border-top:1px solid gray; background:#ccc; }
+table th:first-child, table td:first-child { border-left:1px solid gray; }
+table th, table td { border-bottom:1px solid gray; }
+table th, table td { border-right:1px solid gray; }
+
+input, textarea, select { border:1px solid gray; font-size:1em; }
+textarea {width:30em}
