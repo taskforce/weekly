@@ -22,7 +22,7 @@
 
 <% @todos.each do |todo| %>
   <tr>
-    <td><%= todo.description %></td>
+    <td><%= raw todo.description.gsub("\n", "<br/>") if todo.description %></td>
     <td class="fmt-nowrap">
       <div><%= todo.request_team %></div>
       <div><%= todo.request_user %></div>
@@ -38,7 +38,7 @@
       <div><%= todo.due ? todo.due.strftime('%m/%d') : "-" %></div>
       <div><%= todo.finished ? todo.finished.strftime('%m/%d') : "-" %></div>
     </td>
-    <td><%= todo.note %></td>
+    <td><%= raw todo.note.gsub("\n", "<br/>") if todo.note %></td>
     <td>
       <%= todo.author.email.split('@')[0] %><br />
       <%= link_to 'Edit', edit_todo_path(todo) %><br />
