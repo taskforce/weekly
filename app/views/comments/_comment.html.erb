@@ -1,5 +1,5 @@
   <div>
-    <p><%= comment.content %></p>
+    <p><%= raw comment.content.gsub("\n","<br />") %></p>
     <p style="text-align:right; margin-bottom:0;"><%= comment.created_at %></p>
     <p style="text-align:right; margin-top:0;"><%= comment.author.email %></p>
   </div>

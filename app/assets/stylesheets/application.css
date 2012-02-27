@@ -18,8 +18,9 @@ table th, table td { border-right:1px solid gray; }
 input, textarea, select { border:1px solid gray; font-size:1em; }
 textarea {width:30em}
 
-td div { border-top:1px dashed gray; white-space:nowrap; }
-td div:first-child { border-top:0; white-space:nowrap; }
+td div { border-top:1px dashed gray; }
+td div:first-child { border-top:0; }
+td.fmt-nowrap div { white-space:nowrap; }
 .fmt-underline { text-decoration:underline; }
 a { text-decoration:none; font-style:italic; }
 
