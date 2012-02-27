@@ -8,17 +8,20 @@
 
 body { margin:0; }
 * { font-family: "맑은 고딕" !important}
-div.headline { background:black; color:white;  padding:2px; text-align:right; }
-table {width:98%; margin:auto; }
-table th { border-top:1px solid gray; background:#ccc; }
-table th:first-child, table td:first-child { border-left:1px solid gray; }
-table th, table td { border-bottom:1px solid gray; }
-table th, table td { border-right:1px solid gray; }
+div.headline { background:black; color:white;  padding:2px; }
+div.headline h1 { display:inline; }
+div.headline ul { float:right; }
+table {width:98%; margin:3px auto; }
+table th { border-top:1px solid #888; background:#ccc; }
+table tr:first-child td { border-top:1px solid #888; }
+table th:first-child, table td:first-child { border-left:1px solid #888; }
+table th, table td { border-bottom:1px solid #888; }
+table th, table td { border-right:1px solid #888; }
 
-input, textarea, select { border:1px solid gray; font-size:1em; }
+input, textarea, select { border:1px solid #888; font-size:1em; }
 textarea {width:30em}
 
-td div { border-top:1px dashed gray; }
+td div { border-top:1px dashed #888; }
 td div:first-child { border-top:0; }
 td.fmt-nowrap div { white-space:nowrap; }
 .fmt-underline { text-decoration:underline; }
@@ -26,3 +29,14 @@ a { text-decoration:none; font-style:italic; }
 
 .headline ul { margin:0; }
 .headline ul li { display:inline; list-style: none; }
+
+/* override */
+.td-header { background: url("/css/images/ui-bg_diagonals-thick_8_333333_40x40.png") repeat scroll 50% 50% #333333; }
+.td-header { text-align:center; font-weight:bold; color:#ddd; }
+.td-content { padding:0 1em; }
+
+div.todo-comment p {margin:0}
+
+.help { font-style:italic; font-weight:normal; font-size:10pt !important;
+	color:#000; background:#dd5;}
+.help { background: url("/css/images/ui-bg_diagonals-help.png") repeat scroll 50% 50%; }

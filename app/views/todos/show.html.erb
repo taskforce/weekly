@@ -7,61 +7,63 @@
 
 <p id="notice"><%= notice %></p>
 
-<table>
+<table cellspacing=0>
   <tr>
-    <td class='ui-widget-header td-header'>분류</td>
-    <td class='td-content'><%= @todo.category %></td>
-    <td class='ui-widget-header td-header'>담당자</td>
-    <td class='td-content'><%= @todo.owner %></td>
-    <td class='ui-widget-header td-header'>접수일</td>
-    <td class='td-content'><%= @todo.created_at %></td>
+    <td class='td-header'>분류</td>
+    <td class='td-content'><%= @todo.category %>&nbsp;</td>
+    <td class='td-header'>담당자</td>
+    <td class='td-content'><%= @todo.owner %>&nbsp;</td>
+    <td class='td-header'>접수일</td>
+    <td class='td-content'><%= @todo.created_at %>&nbsp;</td>
   </tr>
   <tr>
-    <td class='ui-widget-header td-header'>상태</td>
-    <td class='td-content'><%= @todo.status %></td>
-    <td class='ui-widget-header td-header'>요청팀</td>
-    <td class='td-content'><%= @todo.request_team %></td>
-    <td class='ui-widget-header td-header'>예정일</td>
-    <td class='td-content'><%= @todo.due %></td>
+    <td class='td-header'>상태</td>
+    <td class='td-content'><%= @todo.status %>&nbsp;</td>
+    <td class='td-header'>요청팀</td>
+    <td class='td-content'><%= @todo.request_team %>&nbsp;</td>
+    <td class='td-header'>예정일</td>
+    <td class='td-content'><%= @todo.due %>&nbsp;</td>
   </tr>
   <tr>
-    <td class='ui-widget-header td-header'></td>
-    <td class='td-content'></td>
-    <td class='ui-widget-header td-header'>요청자</td>
-    <td class='td-content'><%= @todo.request_user %></td>
-    <td class='ui-widget-header td-header'>시작일</td>
-    <td class='td-content'><%= @todo.started %></td>
+    <td class='td-header'>&nbsp;</td>
+    <td class='td-content'>&nbsp;</td>
+    <td class='td-header'>요청자</td>
+    <td class='td-content'><%= @todo.request_user %>&nbsp;</td>
+    <td class='td-header'>시작일</td>
+    <td class='td-content'><%= @todo.started %>&nbsp;</td>
   </tr>
   <tr>
-    <td class='ui-widget-header td-header'></td>
-    <td class='td-content'></td>
-    <td class='ui-widget-header td-header'>작성자</td>
-    <td class='td-content'><%= @todo.author.email %></td>
-    <td class='ui-widget-header td-header'>종료일</td>
-    <td class='td-content'><%= @todo.finished %></td>
+    <td class='td-header'>&nbsp;</td>
+    <td class='td-content'>&nbsp;</td>
+    <td class='td-header'>작성자</td>
+    <td class='td-content'><%= @todo.author.email %>&nbsp;</td>
+    <td class='td-header'>종료일</td>
+    <td class='td-content'><%= @todo.finished %>&nbsp;</td>
   </tr>
 </table>
-<table>
+<table cellspacing="0">
   <tr>
-    <td class='ui-widget-header td-header'>내용</td>
-    <td class='ui-widget-header td-header'>노트</td>
+    <td class='td-header' style="width:50%">내용</td>
+    <td class='td-header' style="width:50%">노트</td>
   </tr>
   <tr>
-    <td><%= raw @todo.description.gsub("\n", "<br/>") if @todo.description %></td>
-    <td><%= raw @todo.note.gsub("\n", "<br/>") if @todo.note %></td>
+    <td style="width:50%"><%=
+      raw @todo.description.gsub("\n", "<br/>") if @todo.description %></td>
+    <td style="width:50%"><%=
+      raw @todo.note.gsub("\n", "<br/>") if @todo.note %>&nbsp;</td>
   </tr>
 </table>
 
-<table><tr><td>
+<table cellspacing="0"><tr><td style="text-align:right; background:#ccc">
       <%= link_to 'Edit', edit_todo_path(@todo) %> |
       <%= link_to 'Back', todos_path %>
 </td></tr></table>
 
-<table>
+<table cellspacing="0">
   <tr>
     <td style="width:50%; vertical-align:top; ">
       <h3>Comments</h3>
-      <div>
+      <div class="todo-comment">
         <%= render @todo.comments %>
       </div>
     </td>
@@ -75,6 +77,19 @@
         </div>
         <div class="actions" style="border:0; text-align:right">
           <%= f.submit %>
+        </div>
+        <div class="help">
+          <p>Comment로 작성된 내용은 Export된 Excel에 포함되지 않습니다.<br />
+          형식을 가지고 써도 되고, 그냥 말로 하듯이 풀어 써도 됩니다.
+          관련 팀원들의 내용 공유를 위한 것이니 편하게 작성하세요.</p>
+
+          <p>필요하면/귀찮으면 오고 가는 메일을 그냥 복사해서 붙여도 됩니다.
+          아직 구현되지 않았으나, '#'으로 시작되는 단어는 tag로 인식되게
+          할려고 생각중이고, '@'으로 시작되는 단어는 서버명으로 인식하게
+          하려고 합니다. (예: #통합IT @skcc-miipdb1)
+          문장 중에 사용하세요. 이 시스템이 사장되지 않으면 언젠간 되겠죠.</p>
+
+          <p>본문 수정은 "노트" 아래의 잘 보이지 않는 Edit를 사용하세요.</p>
         </div>
       <% end %>
   </td></tr>
