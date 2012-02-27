@@ -57,4 +57,25 @@
       <%= link_to 'Back', todos_path %>
 </td></tr></table>
 
-
+<table>
+  <tr>
+    <td style="width:50%; vertical-align:top; ">
+      <h3>Comments</h3>
+      <div>
+        <%= render @todo.comments %>
+      </div>
+    </td>
+    <td style="width:50%; vertical-align:top; ">
+      <h3 style="text-align:right">Add a comment:</h3>
+      <%= form_for([@todo, @todo.comments.build]) do |f| %>
+        <input type="hidden" name="author" value="<%= current_user.id %>">
+        </input>
+        <div class="field" style="text-align:right">
+          <%= f.text_area :content, :rows => 6 %>
+        </div>
+        <div class="actions" style="border:0; text-align:right">
+          <%= f.submit %>
+        </div>
+      <% end %>
+  </td></tr>
+</table>

@@ -2,7 +2,8 @@ class CommentsController < ApplicationController
   # GET /comments
   # GET /comments.json
   def index
-    @comments = Comment.all
+    @comments = Todo.find(params[:todo_id]).comments
+    #@comments = Comment.all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -24,7 +25,8 @@ class CommentsController < ApplicationController
   # GET /comments/new
   # GET /comments/new.json
   def new
-    @comment = Comment.new
+    #@comment = Comment.new
+    @comment = Todo.find(params[:todo_id]).comments.new
 
     respond_to do |format|
       format.html # new.html.erb
@@ -34,23 +36,18 @@ class CommentsController < ApplicationController
 
   # GET /comments/1/edit
   def edit
-    @comment = Comment.find(params[:id])
+    #@comment = Comment.find(params[:id])
+    @comment = Todo.find(params[:todo_id]).comments.find(params[:id])
   end
 
   # POST /comments
   # POST /comments.json
   def create
-    @comment = Comment.new(params[:comment])
-
-    respond_to do |format|
-      if @comment.save
-        format.html { redirect_to @comment, :notice => 'Comment was successfully created.' }
-        format.json { render :json => @comment, :status => :created, :location => @comment }
-      else
-        format.html { render :action => "new" }
-        format.json { render :json => @comment.errors, :status => :unprocessable_entity }
-      end
-    end
+    @todo = Todo.find(params[:todo_id])
+    @comment = @todo.comments.new(params[:comment])
+    @comment.author = Author.find(params[:author])
+    @comment.save
+    redirect_to todo_path(@todo)
   end
 
   # PUT /comments/1

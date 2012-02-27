@@ -1,5 +1,4 @@
 Weekly::Application.routes.draw do
-  resources :comments
   resources :todos do
 	    resources :comments
   end
