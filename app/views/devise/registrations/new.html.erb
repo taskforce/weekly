@@ -1,3 +1,4 @@
+<div style="margin:5em auto; padding:10px; width:20em; border:1px solid gray">
 <h2>Sign up</h2>
 
 <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
@@ -12,7 +13,9 @@
   <div><%= f.label :password_confirmation %><br />
   <%= f.password_field :password_confirmation %></div>
 
+  <br />
   <div><%= f.submit "Sign up" %></div>
 <% end %>
 
 <%= render :partial => "devise/shared/links" %>
+</div>
