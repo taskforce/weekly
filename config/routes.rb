@@ -1,5 +1,8 @@
 Weekly::Application.routes.draw do
-  resources :todos
+  resources :comments
+  resources :todos do
+	    resources :comments
+  end
 
   devise_for :users
 

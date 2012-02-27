@@ -1,60 +1,60 @@
+<style>
+  .td-header { width:8em; text-align:center; }
+  .td-content { width:20em; }
+</style>
+
+
+
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Category:</b>
-  <%= @todo.category %>
-</p>
+<table>
+  <tr>
+    <td class='ui-widget-header td-header'>분류</td>
+    <td class='td-content'><%= @todo.category %></td>
+    <td class='ui-widget-header td-header'>담당자</td>
+    <td class='td-content'><%= @todo.owner %></td>
+    <td class='ui-widget-header td-header'>접수일</td>
+    <td class='td-content'><%= @todo.created_at %></td>
+  </tr>
+  <tr>
+    <td class='ui-widget-header td-header'>상태</td>
+    <td class='td-content'><%= @todo.status %></td>
+    <td class='ui-widget-header td-header'>요청팀</td>
+    <td class='td-content'><%= @todo.request_team %></td>
+    <td class='ui-widget-header td-header'>예정일</td>
+    <td class='td-content'><%= @todo.due %></td>
+  </tr>
+  <tr>
+    <td class='ui-widget-header td-header'></td>
+    <td class='td-content'></td>
+    <td class='ui-widget-header td-header'>요청자</td>
+    <td class='td-content'><%= @todo.request_user %></td>
+    <td class='ui-widget-header td-header'>시작일</td>
+    <td class='td-content'><%= @todo.started %></td>
+  </tr>
+  <tr>
+    <td class='ui-widget-header td-header'></td>
+    <td class='td-content'></td>
+    <td class='ui-widget-header td-header'>작성자</td>
+    <td class='td-content'><%= @todo.author.email %></td>
+    <td class='ui-widget-header td-header'>종료일</td>
+    <td class='td-content'><%= @todo.finished %></td>
+  </tr>
+</table>
+<table>
+  <tr>
+    <td class='ui-widget-header td-header'>내용</td>
+    <td class='ui-widget-header td-header'>노트</td>
+  </tr>
+  <tr>
+    <td><%= raw @todo.description.gsub("\n", "<br/>") if @todo.description %></td>
+    <td><%= raw @todo.note.gsub("\n", "<br/>") if @todo.note %></td>
+  </tr>
+</table>
 
-<p>
-  <b>Description:</b>
-  <%= @todo.description %>
-</p>
-
-<p>
-  <b>Request team:</b>
-  <%= @todo.request_team %>
-</p>
-
-<p>
-  <b>Request user:</b>
-  <%= @todo.request_user %>
-</p>
-
-<p>
-  <b>Owner:</b>
-  <%= @todo.owner %>
-</p>
-
-<p>
-  <b>Status:</b>
-  <%= @todo.status %>
-</p>
-
-<p>
-  <b>Started:</b>
-  <%= @todo.started %>
-</p>
-
-<p>
-  <b>Due:</b>
-  <%= @todo.due %>
-</p>
-
-<p>
-  <b>Finished:</b>
-  <%= @todo.finished %>
-</p>
-
-<p>
-  <b>Note:</b>
-  <%= @todo.note %>
-</p>
-
-<p>
-  <b>Author:</b>
-  <%= @todo.author %>
-</p>
+<table><tr><td>
+      <%= link_to 'Edit', edit_todo_path(@todo) %> |
+      <%= link_to 'Back', todos_path %>
+</td></tr></table>
 
 
-<%= link_to 'Edit', edit_todo_path(@todo) %> |
-<%= link_to 'Back', todos_path %>

@@ -41,6 +41,7 @@
     <td><%= raw todo.note.gsub("\n", "<br/>") if todo.note %></td>
     <td>
       <%= todo.author.email.split('@')[0] %><br />
+      <%= link_to 'Show', todo %>
       <%= link_to 'Edit', edit_todo_path(todo) %><br />
       <%= link_to 'Delete', todo, :confirm => 'Are you sure?', :method => :delete %>
     </td>
