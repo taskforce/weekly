@@ -31,7 +31,7 @@
   %><%= "internal" if todo.level == "내부용"
   %><%= "delayed" if todo.status == "대기"
   %>">
-    <td style="width:45%">
+    <td style="width:40%">
       <%= link_to raw(todo.description.gsub("\n", "<br/>")),
         todo, {:class => "full"} %>
     </td>
