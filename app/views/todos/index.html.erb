@@ -25,7 +25,7 @@
 
 <% @todos.each do |todo| %>
   <tr>
-    <td>
+    <td style="width:45%">
       <%= link_to raw(todo.description.gsub("\n", "<br/>")),
         todo, {:class => "full"} %>
     </td>
@@ -46,12 +46,13 @@
     </td>
     <td><%= raw todo.note.gsub("\n", "<br/>") if todo.note %>&nbsp;</td>
     <td class="fmt-nowrap align-center">
-      <%= todo.author.email.split('@')[0] %>,
+      <div><%= todo.author.email.split('@')[0] %>,
       댓글: <%= todo.comments.count %>
-      <br />
-      <%= link_to '수정', edit_todo_path(todo) %>
+      </div>
+      <div><%= link_to '수정', edit_todo_path(todo) %>
       <%= link_to '삭제', todo,
         :confirm => '정말 지우실라고요?', :method => :delete %>
+      </div>
     </td>
   </tr>
 <% end %>
