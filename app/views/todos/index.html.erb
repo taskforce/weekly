@@ -5,6 +5,9 @@
   .toolbar { font-weight: bold; font-size: 1.2em; }
   td a.full { text-decoration:none; font-style:normal; color:#114; }
   td a.full { display:block; padding:0px; height:100%;}
+  tr.finished, tr.finished a { background:#f4f4f4; color:#888; }
+  tr.internal, tr.internal a { background:#eeeeff; font-style:italic; }
+  tr.delayed, tr.delayed a { color:#600; }
 </style>
 
 <div class="toolbar">
@@ -24,7 +27,10 @@
   </tr>
 
 <% @todos.each do |todo| %>
-  <tr>
+  <tr class="<%= "finished " if todo.status == "완료"
+  %><%= "internal" if todo.level == "내부용"
+  %><%= "delayed" if todo.status == "대기"
+  %>">
     <td style="width:45%">
       <%= link_to raw(todo.description.gsub("\n", "<br/>")),
         todo, {:class => "full"} %>
