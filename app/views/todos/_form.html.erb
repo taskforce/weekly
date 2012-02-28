@@ -16,21 +16,24 @@
 		<tr><th colspan=3 class="ui-widget-header">작성</th></tr>
 		<tr>
 			<td>등급:
-				<%= f.select(:level, options_for_select(["보고용","내부용"])) %>
+				<%= f.select(:level,
+						options_for_select(["보고용","내부용"], @todo.level)) %>
 			</td>
 			<td>요청팀: <%= f.text_field :request_team, :size => 20 %></td>
 			<td>시작일: <%= f.datepicker :started %></td>
 		</tr>
 		<tr>
 			<td>구분:
-			<%= f.select(:category, options_for_select(["SVR","WAS","DB","Misc"])) %>
+				<%= f.select(:category,
+						options_for_select(["SVR","WAS","DB","Misc"], @todo.category)) %>
 			</td>
 			<td>요청자: <%= f.text_field :request_user, :size => 20 %></td>
 			<td>예정일: <%= f.datepicker :due %></td>
 		</tr>
 		<tr>
 			<td>상태:
-				<%= f.select(:status, options_for_select(["진행중","대기","완료"])) %>
+				<%= f.select(:status,
+						options_for_select(["진행중","대기","완료"], @todo.status)) %>
 			</td>
 			<td>담당자: <%= f.text_field :owner, :size => 20 %></td>
 			<td>완료일: <%= f.datepicker :finished %></td>

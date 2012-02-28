@@ -17,6 +17,7 @@ table tr:first-child td { border-top:1px solid #888; }
 table th:first-child, table td:first-child { border-left:1px solid #888; }
 table th, table td { border-bottom:1px solid #888; }
 table th, table td { border-right:1px solid #888; }
+a { text-decoration:none; font-style:italic; }
 
 input, textarea, select { border:1px solid #888; font-size:1em; }
 textarea {width:30em}
@@ -25,7 +26,8 @@ td div { border-top:1px dashed #888; }
 td div:first-child { border-top:0; }
 td.fmt-nowrap div { white-space:nowrap; }
 .fmt-underline { text-decoration:underline; }
-a { text-decoration:none; font-style:italic; }
+
+.align-center { text-align:center; }
 
 .headline ul { margin:0; }
 .headline ul li { display:inline; list-style: none; }

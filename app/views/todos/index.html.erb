@@ -3,6 +3,8 @@
 <style>
   .toolbar { width:98%; margin:auto; text-align:right; margin-bottom: 5px; }
   .toolbar { font-weight: bold; font-size: 1.2em; }
+  td a.full { text-decoration:none; font-style:normal; color:#114; }
+  td a.full { display:block; padding:0px; height:100%;}
 </style>
 
 <div class="toolbar">
@@ -23,28 +25,33 @@
 
 <% @todos.each do |todo| %>
   <tr>
-    <td><%= raw todo.description.gsub("\n", "<br/>") if todo.description %></td>
-    <td class="fmt-nowrap">
-      <div><%= todo.request_team %></div>
-      <div><%= todo.request_user %></div>
-      <div><%= todo.level %></div>
-    </td>
-    <td class="fmt-nowrap">
-      <div><%= todo.category %></div>
-      <div><%= todo.owner %></div>
-      <div><%= todo.status %></div>
-    </td>
     <td>
+      <%= link_to raw(todo.description.gsub("\n", "<br/>")),
+        todo, {:class => "full"} %>
+    </td>
+    <td class="fmt-nowrap align-center">
+      <div><%= todo.request_team %>&nbsp;</div>
+      <div><%= todo.request_user %>&nbsp;</div>
+      <div><%= todo.level %>&nbsp;</div>
+    </td>
+    <td class="fmt-nowrap align-center">
+      <div><%= todo.category %>&nbsp;</div>
+      <div><%= todo.owner %>&nbsp;</div>
+      <div><%= todo.status %>&nbsp;</div>
+    </td>
+    <td class="fmt-nowrap align-center">
       <div><%= todo.started ? todo.started.strftime('%m/%d') : "-" %></div>
       <div><%= todo.due ? todo.due.strftime('%m/%d') : "-" %></div>
       <div><%= todo.finished ? todo.finished.strftime('%m/%d') : "-" %></div>
     </td>
-    <td><%= raw todo.note.gsub("\n", "<br/>") if todo.note %></td>
-    <td>
-      <%= todo.author.email.split('@')[0] %><br />
-      <%= link_to 'Show', todo %>
-      <%= link_to 'Edit', edit_todo_path(todo) %><br />
-      <%= link_to 'Delete', todo, :confirm => 'Are you sure?', :method => :delete %>
+    <td><%= raw todo.note.gsub("\n", "<br/>") if todo.note %>&nbsp;</td>
+    <td class="fmt-nowrap align-center">
+      <%= todo.author.email.split('@')[0] %>,
+      댓글: <%= todo.comments.count %>
+      <br />
+      <%= link_to '수정', edit_todo_path(todo) %>
+      <%= link_to '삭제', todo,
+        :confirm => '정말 지우실라고요?', :method => :delete %>
     </td>
   </tr>
 <% end %>
