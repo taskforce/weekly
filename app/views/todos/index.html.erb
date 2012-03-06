@@ -41,7 +41,7 @@
       <div><%= todo.level %>&nbsp;</div>
     </td>
     <td class="fmt-nowrap align-center">
-      <div><%= todo.category %>&nbsp;</div>
+      <div><%= todo.category %>/<%= todo.tower %></div>
       <div><%= todo.owner %>&nbsp;</div>
       <div><%= todo.status %>&nbsp;</div>
     </td>
@@ -59,6 +59,7 @@
       <%= link_to '삭제', todo,
         :confirm => '정말 지우실라고요?', :method => :delete %>
       </div>
+      <div><%= todo.updated_at.localtime.strftime('%m-%d %H:%M') %></div>
     </td>
   </tr>
 <% end %>

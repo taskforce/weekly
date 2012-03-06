@@ -26,19 +26,19 @@ module TodosHelper
     format_date = Spreadsheet::Format.new fmtopt_date
 
     tada.row(0).default_format = format_head
-    tada.row(0).push "#", "분류", "내용",
+    tada.row(0).push "#", "분류", "영역", "내용",
       "요청팀", "요청자", "담당자",
       "상태", "시작일", "예정일", "종료일", "노트"
 
     i = 1
     @todos.each do |t|
       tada.row(i).default_format = format_rows
-      tada.row(i).set_format(2,format_text)
-      tada.row(i).set_format(7,format_date)
+      tada.row(i).set_format(3,format_text)
       tada.row(i).set_format(8,format_date)
       tada.row(i).set_format(9,format_date)
-      tada.row(i).set_format(10,format_text)
-      tada.row(i).push t.id, t.category, t.description,
+      tada.row(i).set_format(10,format_date)
+      tada.row(i).set_format(11,format_text)
+      tada.row(i).push t.id, t.category, t.tower, t.description,
         t.request_team, t.request_user, t.owner,
         t.status, t.started, t.due, t.finished, t.note
       i += 1
@@ -46,11 +46,12 @@ module TodosHelper
 
     tada.column(0).width = 3
     tada.column(1).width = 5
-    tada.column(2).width = 50
-    tada.column(10).width = 35
-    tada.column(7).width = 11
+    tada.column(2).width = 5
+    tada.column(3).width = 50
     tada.column(8).width = 11
     tada.column(9).width = 11
+    tada.column(10).width = 11
+    tada.column(11).width = 35
 
     io = StringIO.new
     book.write(io)

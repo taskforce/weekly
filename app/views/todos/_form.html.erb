@@ -17,26 +17,29 @@
 		<tr>
 			<td>등급:
 				<%= f.select(:level,
-						options_for_select(["보고용","내부용"], @todo.level)) %>
+						options_for_select(["내부용","보고용"], @todo.level)) %>
 			</td>
 			<td>요청팀: <%= f.text_field :request_team, :size => 20 %></td>
-			<td>시작일: <%= f.datepicker :started %></td>
+			<td>시작일: <%= f.datepicker :started, :dateFormat => 'yy-mm-dd' %></td>
 		</tr>
 		<tr>
 			<td>구분:
-				<%= f.select(:category,
-						options_for_select(["SVR","WAS","DB","Misc"], @todo.category)) %>
+				<%= cate_list = ["","변경","장애","검토","프로젝트","기타"]
+				  f.select(:category, options_for_select(cate_list, @todo.category)) %>
+				영역:
+				<%= tower_list = ["","SVR","WAS","DB","Misc"]
+					f.select(:tower, options_for_select(tower_list, @todo.tower)) %>
 			</td>
 			<td>요청자: <%= f.text_field :request_user, :size => 20 %></td>
-			<td>예정일: <%= f.datepicker :due %></td>
+			<td>예정일: <%= f.datepicker :due, :dateFormat => 'yy-mm-dd' %></td>
 		</tr>
 		<tr>
 			<td>상태:
-				<%= f.select(:status,
-						options_for_select(["진행중","대기","완료"], @todo.status)) %>
+				<%= status_list = ["진행중","대기","완료"]
+			    f.select(:status, options_for_select(status_list, @todo.status)) %>
 			</td>
 			<td>담당자: <%= f.text_field :owner, :size => 20 %></td>
-			<td>완료일: <%= f.datepicker :finished %></td>
+			<td>완료일: <%= f.datepicker :finished, :dateFormat => 'yy-mm-dd' %></td>
 		</tr>
 	</table>
 

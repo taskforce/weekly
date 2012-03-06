@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120227051231) do
+ActiveRecord::Schema.define(:version => 20120306090329) do
 
   create_table "comments", :force => true do |t|
     t.text     "content"
@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(:version => 20120227051231) do
   add_index "comments", ["todo_id"], :name => "index_comments_on_todo_id"
 
   create_table "todos", :force => true do |t|
-    t.string   "category"
+    t.string   "tower"
     t.text     "description"
     t.string   "request_team"
     t.string   "request_user"
@@ -38,6 +38,7 @@ ActiveRecord::Schema.define(:version => 20120227051231) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "level"
+    t.string   "category"
   end
 
   add_index "todos", ["author_id"], :name => "index_todos_on_author_id"

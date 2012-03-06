@@ -14,19 +14,20 @@
     <td class='td-header'>담당자</td>
     <td class='td-content'><%= @todo.owner %>&nbsp;</td>
     <td class='td-header'>접수일</td>
-    <td class='td-content'><%= @todo.created_at %>&nbsp;</td>
+    <td class='td-content'><%=
+      @todo.created_at.localtime.strftime "%Y-%m-%d" %>&nbsp;</td>
   </tr>
   <tr>
-    <td class='td-header'>상태</td>
-    <td class='td-content'><%= @todo.status %>&nbsp;</td>
+    <td class='td-header'>영역</td>
+    <td class='td-content'><%= @todo.tower %>&nbsp;</td>
     <td class='td-header'>요청팀</td>
     <td class='td-content'><%= @todo.request_team %>&nbsp;</td>
     <td class='td-header'>예정일</td>
     <td class='td-content'><%= @todo.due %>&nbsp;</td>
   </tr>
   <tr>
-    <td class='td-header'>&nbsp;</td>
-    <td class='td-content'>&nbsp;</td>
+    <td class='td-header'>상태</td>
+    <td class='td-content'><%= @todo.status %>&nbsp;</td>
     <td class='td-header'>요청자</td>
     <td class='td-content'><%= @todo.request_user %>&nbsp;</td>
     <td class='td-header'>시작일</td>
