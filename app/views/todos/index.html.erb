@@ -36,7 +36,10 @@
         todo, {:class => "full"} %>
     </td>
     <td class="fmt-nowrap align-center">
-      <div><%= todo.request_team %>&nbsp;</div>
+      <div><%=
+        todo.request_team ? truncate(todo.request_team,
+                                     :length => 8) : '-'
+      %></div>
       <div><%= todo.request_user %>&nbsp;</div>
       <div><%= todo.level %>&nbsp;</div>
     </td>
