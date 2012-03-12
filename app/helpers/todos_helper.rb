@@ -28,7 +28,8 @@ module TodosHelper
     tada.row(0).default_format = format_head
     tada.row(0).push "#", "분류", "영역", "내용",
       "요청팀", "요청자", "담당자",
-      "상태", "시작일", "예정일", "종료일", "노트"
+      "상태", "시작일", "예정일", "종료일", "노트",
+      "보고용"
 
     i = 1
     @todos.each do |t|
@@ -46,7 +47,8 @@ module TodosHelper
       tada.row(i).set_format(11,format_text)
       tada.row(i).push t.id, t.category, t.tower, desc,
         t.request_team, t.request_user, t.owner,
-        t.status, t.started, t.due, t.finished, t.note
+        t.status, t.started, t.due, t.finished, t.note,
+        t.level
       i += 1
     end
 
