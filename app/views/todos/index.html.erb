@@ -36,10 +36,15 @@
     <td style="width:40%">
       <div class="crep"><%= link_to "[" + todo.title + "]",
         todo, {:class => "full"} %></div>
-      <div class="crep"><%= todo.final_rep ?
-        raw(todo.final_rep.content.strip.gsub("\n","<br />")) : "-"%></div>
-      <div class="cref"><%= todo.final_ref ?
-        raw(todo.final_ref.content.strip.gsub("\n","<br />")) : "-"%></div>
+      <% if todo.final_rep %>
+        <div class="crep"><%=
+        raw(todo.final_rep.content.strip.gsub("\n","<br />")) %></div>
+      <% elsif todo.final_ref %>
+        <div class="cref"><%=
+        raw(todo.final_ref.content.strip.gsub("\n","<br />")) %></div>
+      <% else %>
+        <%= "-" %>
+      <% end %>
     </td>
     <td class="fmt-nowrap align-center">
       <div><%=
