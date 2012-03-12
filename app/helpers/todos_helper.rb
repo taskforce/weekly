@@ -32,13 +32,19 @@ module TodosHelper
 
     i = 1
     @todos.each do |t|
+      rep = t.final_rep
+      if rep
+        desc = "[" + t.title + "]\n" + rep.content
+      else
+        desc = "[" + t.title + "]"
+      end
       tada.row(i).default_format = format_rows
       tada.row(i).set_format(3,format_text)
       tada.row(i).set_format(8,format_date)
       tada.row(i).set_format(9,format_date)
       tada.row(i).set_format(10,format_date)
       tada.row(i).set_format(11,format_text)
-      tada.row(i).push t.id, t.category, t.tower, t.description,
+      tada.row(i).push t.id, t.category, t.tower, desc,
         t.request_team, t.request_user, t.owner,
         t.status, t.started, t.due, t.finished, t.note
       i += 1
