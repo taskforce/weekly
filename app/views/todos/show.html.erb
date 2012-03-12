@@ -1,6 +1,7 @@
 <style>
   .td-header { width:8em; text-align:center; }
   .td-content { width:20em; }
+  .cmt-report { background: #fcc; }
 </style>
 
 
@@ -44,12 +45,12 @@
 </table>
 <table cellspacing="0">
   <tr>
-    <td class='td-header' style="width:50%">내용</td>
-    <td class='td-header' style="width:50%">노트</td>
+    <td class='td-header' style="width:50%">제목</td>
+    <td class='td-header' style="width:50%">비고</td>
   </tr>
   <tr>
     <td style="width:50%"><%=
-      raw @todo.description.gsub("\n", "<br/>") if @todo.description %></td>
+      raw @todo.title.gsub("\n", "<br/>") if @todo.title %></td>
     <td style="width:50%"><%=
       raw @todo.note.gsub("\n", "<br/>") if @todo.note %>&nbsp;</td>
   </tr>
@@ -62,30 +63,40 @@
 
 <table cellspacing="0">
   <tr>
+    <td class="td-header">현재상태</td>
+    <td class="td-header">현재상태 입력</td>
+  </tr>
+  <tr>
     <td style="width:50%; vertical-align:top; ">
-      <h3>Comments</h3>
       <div class="todo-comment">
         <%= render @todo.comments %>
       </div>
     </td>
     <td style="width:50%; vertical-align:top; ">
-      <h3 style="text-align:right">Add a comment:</h3>
       <%= form_for([@todo, @todo.comments.build]) do |f| %>
         <input type="hidden" name="author" value="<%= current_user.id %>">
         </input>
         <div class="field" style="text-align:right">
-          <%= f.text_area :content, :rows => 6 %>
+          <%= f.select(:ctype,
+              options_for_select([["참고용",false],["보고용",true]])) %>
+        </div>
+        <div class="field" style="text-align:right">
+          <%= f.text_area :content, :rows => 6, :cols => 50 %>
         </div>
         <div class="actions" style="border:0; text-align:right">
           <%= f.submit %>
         </div>
         <div class="help">
-          <p>Comment로 작성된 내용은 Export된 Excel에 포함되지 않습니다.<br />
-          형식을 가지고 써도 되고, 그냥 말로 하듯이 풀어 써도 됩니다.
-          관련 팀원들의 내용 공유를 위한 것이니 편하게 작성하세요.</p>
+          <p>"현재상태"로 작성된 내용은 Type 지정에 따라 보고용 본문에
+          포함되거나 내부 참조용으로만 활용됩니다.</p>
+          <p>Type이 보고용인 경우, 보고에 알맞게 정리하시고,
+          Type이 참고용인 경우는 형식에 얽메이지 말고 그냥 말하듯이 편하게
+          풀어 쓰셔도 됩니다.
+          (팀원들의 내용 공유와 이력 관리가 목적임)</p>
 
-          <p>필요하면/귀찮으면 오고 가는 메일을 그냥 복사해서 붙여도 됩니다.
-          아직 구현되지 않았으나, '#'으로 시작되는 단어는 tag로 인식되게
+          <p>필요하면/귀찮으면 오고 가는 메일을 그냥 복사해서 붙여도 됩니다.</p>
+
+          <p>아직 구현되지 않았으나, '#'으로 시작되는 단어는 tag로 인식되게
           할려고 생각중이고, '@'으로 시작되는 단어는 서버명으로 인식하게
           하려고 합니다. (예: #통합IT @skcc-miipdb1)
           문장 중에 사용하세요. 이 시스템이 사장되지 않으면 언젠간 되겠죠.</p>

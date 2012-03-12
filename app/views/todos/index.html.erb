@@ -8,6 +8,8 @@
   tr.finished, tr.finished a { background:#f4f4f4; color:#888; }
   tr.internal, tr.internal a { background:#eeeeff; font-style:italic; }
   tr.delayed, tr.delayed a { color:#600; }
+  div.crep { font-weight: bold; }
+  div.cref { font-style:italic; color:#999; }
 </style>
 
 <div class="toolbar">
@@ -32,8 +34,10 @@
   %><%= "delayed " if todo.status == "대기"
   %>">
     <td style="width:40%">
-      <%= link_to raw(todo.description.gsub("\n", "<br/>")),
-        todo, {:class => "full"} %>
+      <div class="crep"><%= link_to "[" + todo.title + "]",
+        todo, {:class => "full"} %></div>
+      <div class="crep"><%=todo.final_rep ? todo.final_rep.content : "-"%></div>
+      <div class="cref"><%=todo.final_ref ? todo.final_ref.content : "-"%></div>
     </td>
     <td class="fmt-nowrap align-center">
       <div><%=

@@ -45,12 +45,18 @@
 
 	<table cellspacing=0>
 		<tr>
-			<th>내용</th>
-			<th>비고</th>
+			<th>제목</th>
+			<td><%= f.text_field :title, :size => 80 %>
+				<span class="help">&lt;-- 계속 유지될 제목</span></td>
 		</tr>
 		<tr>
-			<td><%= f.text_area :description, :rows => 10 %></td>
-			<td><%= f.text_area :note, :rows => 10 %></td>
+			<th>비고</th>
+			<td><%= f.text_area :note, :rows => 8, :cols => 80 %>
+				<div class="help">
+					배경, 전체일정, 수량 등 유지되는 내용으로 작성.<br/>
+					업데이트 되는 내용은 "현재상태"로 따로 입력.
+				</div>
+			</td>
 		</tr>
 	</table>
 	<table cellspacing=0 class="actions">
@@ -59,10 +65,9 @@
 		</td></tr>
 	</table>
 	<table cellspacing=0 class="help"><tr><td>
-		"등급"이 보고용일 경우에는 위 내용으로 위클리 보고가 됩니다.<br />
-		보고에 필요/충분한 수준에서 간결히 작성하시고,
-		보고자나 업무 관련자의 이해를 위한 내용은, 본문 작성 후 Comment 기능을
-		이용하여 추가하세요.
+		보고/업무공유에 필요/충분한 수준에서 간결히 작성하시고,<br/>
+		현황 업데이트 및 보고자나 업무 관련자의 이해를 위한 내용은,
+		본문 작성 후 "현재상태" 입력을 통하여 추가하세요.
 	</td></tr></table>
 <% end %>
 <!-- vim:set ts=2 sw=2: -->

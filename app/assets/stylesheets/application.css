@@ -20,7 +20,6 @@ table th, table td { border-right:1px solid #888; }
 a { text-decoration:none; font-style:italic; }
 
 input, textarea, select { border:1px solid #888; font-size:1em; }
-textarea {width:30em}
 
 td div { border-top:1px dashed #888; }
 td div:first-child { border-top:0; }

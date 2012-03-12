@@ -1,6 +1,8 @@
-  <div>
-    <p><%= raw comment.content.gsub("\n","<br />") %></p>
+  <div class="<%= comment.ctype ? "cmt-report" : "" %>">
+    <p><%= raw comment.content.gsub("\n","<br />") if comment.content %></p>
     <p style="text-align:right; margin-bottom:0;"><%=
       comment.created_at.localtime.strftime("%Y-%m-%d %H:%M:%S") %></p>
-    <p style="text-align:right; margin-top:0;"><%= comment.author.email %></p>
+    <p style="text-align:right; margin-top:0;">
+    <%= comment.ctype ? "보고용" : "참고용" %>, <%= comment.author.email %>
+    </p>
   </div>
